@@ -6,7 +6,7 @@ const Form = () => {
   const [address, setAddress] = useState('')
   const [service, setService] = useState('')
   const [subject, setSubject] = useState('vk')
-  const { tg } = useTelegram
+  const { tg } = useTelegram()
 
   useEffect(() => {
     tg.MainButton.setParams({
@@ -20,7 +20,7 @@ const Form = () => {
     } else {
       tg.MainButton.show()
     }
-  }, [country, street])
+  }, [address, service])
 
   const onChangeAddress = (e) => {
     setAddress(e.target.value)
