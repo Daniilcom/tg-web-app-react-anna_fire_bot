@@ -1,13 +1,30 @@
 import React, { useState } from 'react'
-import { useTelegram } from '../../hooks/useTelegram'
-import ProductItem from '../ProductItem/ProductItem'
 import './ProductList.css'
+import ProductItem from '../ProductItem/ProductItem'
+import { useTelegram } from '../../hooks/useTelegram'
+import { useCallback, useEffect } from 'react'
 
 const products = [
-  { id: '1', title: 'Окрашивание', price: 600 },
-  { id: '2', title: 'Коррекция', price: 600 },
-  { id: '3', title: 'Долговременная укладка', price: 1000 },
-  { id: '4', title: 'Ламинирование ресниц', price: 2000 },
+  {
+    id: '1',
+    title: 'Коррекция',
+    price: 700,
+  },
+  {
+    id: '2',
+    title: 'Окрашивание',
+    price: 700,
+  },
+  {
+    id: '3',
+    title: 'Долговременная укладка',
+    price: 1200,
+  },
+  {
+    id: '4',
+    title: 'Ламинирование ресниц',
+    price: 2000,
+  },
 ]
 
 const getTotalPrice = (items = []) => {
@@ -18,7 +35,29 @@ const getTotalPrice = (items = []) => {
 
 const ProductList = () => {
   const [addedItems, setAddedItems] = useState([])
-  const { tg } = useTelegram()
+  const { tg, queryId } = useTelegram()
+
+  const onSendData = useCallback(() => {
+    const data = {
+      products: addedItems,
+      totalPrice: getTotalPrice(addedItems),
+      queryId,
+    }
+    fetch('http://85.119.146.179:8000/web-data', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+  }, [addedItems])
+
+  useEffect(() => {
+    tg.onEvent('mainButtonClicked', onSendData)
+    return () => {
+      tg.offEvent('mainButtonClicked', onSendData)
+    }
+  }, [onSendData])
 
   const onAdd = (product) => {
     const alreadyAdded = addedItems.find((item) => item.id === product.id)
@@ -33,6 +72,8 @@ const ProductList = () => {
     setAddedItems(newItems)
 
     if (newItems.length === 0) {
+      tg.MainButton.hide()
+    } else {
       tg.MainButton.show()
       tg.MainButton.setParams({
         text: `Купить ${getTotalPrice(newItems)}`,
@@ -43,7 +84,7 @@ const ProductList = () => {
   return (
     <div className={'list'}>
       {products.map((item) => (
-        <ProductItem Product={item} onAdd={onAdd} className={'item'} />
+        <ProductItem product={item} onAdd={onAdd} className={'item'} />
       ))}
     </div>
   )
