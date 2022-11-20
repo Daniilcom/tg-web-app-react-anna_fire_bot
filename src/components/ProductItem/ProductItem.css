@@ -19,5 +19,15 @@
 }
 
 .add-btn {
-  width: 100%;
+  padding: 0, 6rem 0, 8rem;
+  font-size: 1, 2rem;
+  text-align: center;
+  border: 0;
+  outline: none;
+  border-radius: 10px;
+  width: 120%;
+  margin-left: 10px;
+  background: rgba(96, 168, 142, 0.8);
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  cursor: pointer;
 }

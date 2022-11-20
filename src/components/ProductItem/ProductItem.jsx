@@ -17,7 +17,7 @@ const ProductItem = ({ product, className, onAdd }) => {
         </span>
       </div>
       <Button className={'add-btn'} onClick={onAddHandler}>
-        Записаться!
+        Выбрать
       </Button>
     </div>
   )
