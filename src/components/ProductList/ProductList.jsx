@@ -3,6 +3,7 @@ import './ProductList.css'
 import ProductItem from '../ProductItem/ProductItem'
 import { useTelegram } from '../../hooks/useTelegram'
 import { useCallback, useEffect } from 'react'
+import browImg from '../images/brow.png'
 
 const products = [
   {
@@ -10,24 +11,28 @@ const products = [
     title: 'Коррекция',
     price: 700,
     description: 'воск, пинцет, прореживание',
+    img: browImg,
   },
   {
     id: '2',
     title: 'Окрашивание',
     price: 700,
     description: 'воск, пинцет, прореживание',
+    img: browImg,
   },
   {
     id: '3',
     title: 'Долговременная укладка',
     price: 1200,
     description: 'воск, пинцет, прореживание',
+    img: browImg,
   },
   {
     id: '4',
     title: 'Ламинирование ресниц',
     price: 2000,
     description: 'воск, пинцет, прореживание',
+    img: browImg,
   },
 ]
 
