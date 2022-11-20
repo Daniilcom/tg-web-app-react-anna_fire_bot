@@ -9,11 +9,12 @@ const ProductItem = ({ product, className, onAdd }) => {
 
   return (
     <div className={'product ' + className}>
-      <div className={'img'} />
       <div className={'title'}>{product.title}</div>
+      <div className={'img'} />
+      <div className={'description'}>{product.description}</div>
       <div className={'price'}>
         <span>
-          Стоимость: <b>{product.price}</b>
+          <b>{product.price}</b>₽
         </span>
       </div>
       <Button className={'add-btn'} onClick={onAddHandler}>

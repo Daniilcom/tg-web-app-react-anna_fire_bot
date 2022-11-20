@@ -1,9 +1,8 @@
 .product {
   display: flex;
   flex-direction: column;
-  background: #ecf3f0;
+  background: #d0ede3;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(67px);
   border-radius: 10px;
   padding: 15px;
   width: 170px;
@@ -23,5 +22,15 @@
 }
 
 .add-btn {
-  width: 100%;
+  padding: 10px 15px;
+  text-align: center;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  width: 120px;
+  margin-left: 10px;
+  background: rgba(96, 168, 142, 0.8);
+  border-radius: 10px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  cursor: pointer;
 }
