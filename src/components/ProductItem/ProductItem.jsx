@@ -7,8 +7,6 @@ const ProductItem = ({ product, className, onAdd }) => {
     onAdd(product)
   }
 
-  const handler = product + 1
-
   return (
     <div className={'product ' + className}>
       <div className={'title'}>{product.title}</div>
@@ -21,7 +19,7 @@ const ProductItem = ({ product, className, onAdd }) => {
           <b>{product.price}</b>₽
         </span>
       </div>
-      {handler === 0 ? (
+      {onAddHandler === [] ? (
         <Button className={'add-btn'} onClick={onAddHandler}>
           Добавлено
         </Button>
