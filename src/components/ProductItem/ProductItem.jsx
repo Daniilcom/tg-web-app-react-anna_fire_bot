@@ -3,7 +3,12 @@ import React, { useState } from 'react'
 import Button from '../Button/Button'
 import './ProductItem.css'
 
-const ProductItem = ({ product, className, onAdd, addedItems }) => {
+const [buttonText, setButtonText] = useState('Выбрать')
+const onButtonClick = () => {
+  setButtonText('Убрать')
+}
+
+const ProductItem = ({ product, className, onAdd }) => {
   const onAddHandler = () => {
     onAdd(product)
   }
@@ -20,15 +25,15 @@ const ProductItem = ({ product, className, onAdd, addedItems }) => {
           <b>{product.price}</b>₽
         </span>
       </div>
-      {addedItems !== [] ? (
-        <Button className={'add-btn'} onClick={onAddHandler}>
-          Выбрать
-        </Button>
-      ) : (
-        <Button className={'add-btn'} onClick={onAddHandler}>
-          Добавлено
-        </Button>
-      )}
+      <Button
+        className={'add-btn'}
+        onClick={() => {
+          onAddHandler()
+          onButtonClick()
+        }}
+      >
+        {buttonText}
+      </Button>
     </div>
   )
 }
