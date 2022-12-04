@@ -19,7 +19,7 @@ const ProductItem = ({ product, className, onAdd }) => {
           <b>{product.price}</b>₽
         </span>
       </div>
-      {onAdd === 0 ? (
+      {product === 0 ? (
         <Button className={'add-btn'} onClick={onAddHandler}>
           Добавлено
         </Button>
