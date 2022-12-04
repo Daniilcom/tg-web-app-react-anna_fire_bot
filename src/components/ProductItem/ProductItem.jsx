@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import Button from '../Button/Button'
 import './ProductItem.css'
 
-const ProductItem = ({ product, className, onAdd, newItems }) => {
+const ProductItem = ({ product, className, onAdd, addedItems }) => {
   const onAddHandler = () => {
     onAdd(product)
   }
@@ -20,15 +20,14 @@ const ProductItem = ({ product, className, onAdd, newItems }) => {
           <b>{product.price}</b>₽
         </span>
       </div>
-      <Button className={'add-btn'} onClick={onAddHandler}>
-        Выбрать
-      </Button>
-      {newItems !== 0 ? (
+      {addedItems !== 0 ? (
+        <Button className={'add-btn'} onClick={onAddHandler}>
+          Выбрать
+        </Button>
+      ) : (
         <Button className={'add-btn'} onClick={onAddHandler}>
           Добавлено
         </Button>
-      ) : (
-        ''
       )}
     </div>
   )
