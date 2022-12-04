@@ -22,7 +22,7 @@ const ProductItem = ({ product, className, onAdd }) => {
       <Button className={'add-btn'} onClick={onAddHandler}>
         Выбрать
       </Button>
-      {onAddHandler !== 0 ? (
+      {ProductItem !== 0 ? (
         <Button className={'add-btn'} onClick={onAddHandler}>
           Добавлено
         </Button>
