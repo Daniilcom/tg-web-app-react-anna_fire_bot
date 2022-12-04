@@ -20,15 +20,17 @@ const ProductItem = ({ product, className, onAdd, addedItems }) => {
           <b>{product.price}</b>₽
         </span>
       </div>
-      {addedItems !== 0 ? (
-        <Button className={'add-btn'} onClick={onAddHandler}>
-          Выбрать
-        </Button>
-      ) : (
-        <Button className={'add-btn'} onClick={onAddHandler}>
-          Добавлено
-        </Button>
-      )}
+      {
+        (addedItems = [] ? (
+          <Button className={'add-btn'} onClick={onAddHandler}>
+            Выбрать
+          </Button>
+        ) : (
+          <Button className={'add-btn'} onClick={onAddHandler}>
+            Добавлено
+          </Button>
+        ))
+      }
     </div>
   )
 }
