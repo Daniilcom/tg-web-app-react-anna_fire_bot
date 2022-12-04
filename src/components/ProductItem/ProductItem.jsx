@@ -1,16 +1,21 @@
-import { hasUnreliableEmptyValue } from '@testing-library/user-event/dist/utils'
 import React, { useState } from 'react'
 import Button from '../Button/Button'
 import './ProductItem.css'
 
-const [buttonText, setButtonText] = useState('Выбрать')
-const onButtonClick = () => {
-  setButtonText('Убрать')
-}
-
 const ProductItem = ({ product, className, onAdd }) => {
   const onAddHandler = () => {
     onAdd(product)
+  }
+  const [buttonText, setButtonText] = useState('Выбрать')
+  const [classesList, setClassesList] = useState('add-btn')
+  const onButtonClick = () => {
+    if (product === 0) {
+      setButtonText('Убрать')
+      setClassesList('add-btn-on')
+    } else {
+      setButtonText('Убрать')
+      setClassesList('add-btn-on')
+    }
   }
 
   return (
@@ -26,7 +31,7 @@ const ProductItem = ({ product, className, onAdd }) => {
         </span>
       </div>
       <Button
-        className={'add-btn'}
+        className={classesList}
         onClick={() => {
           onAddHandler()
           onButtonClick()
