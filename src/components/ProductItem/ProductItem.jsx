@@ -6,10 +6,11 @@ const ProductItem = ({ product, className, onAdd }) => {
   const onAddHandler = () => {
     onAdd(product)
   }
-  const [buttonText, setButtonText] = useState('Выбрать')
-  const [classesList, setClassesList] = useState('add-btn')
+
+  const [buttonText, setButtonText] = useState('')
+  const [classesList, setClassesList] = useState('')
   const onButtonClick = () => {
-    if (product === 0) {
+    if (item.price === 0) {
       setButtonText('Выбрать')
       setClassesList('add-btn')
     } else {
