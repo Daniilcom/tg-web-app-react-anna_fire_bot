@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Button from '../Button/Button'
 import './ProductItem.css'
 
-const ProductItem = ({ product, className, onAdd }) => {
+const ProductItem = ({ product, className, onAdd, item }) => {
   const onAddHandler = () => {
     onAdd(product)
   }
@@ -10,7 +10,7 @@ const ProductItem = ({ product, className, onAdd }) => {
   const [buttonText, setButtonText] = useState('Выбрать')
   const [classesList, setClassesList] = useState('add-btn')
   const onButtonClick = () => {
-    if (item === 0) {
+    if ((item = [])) {
       setButtonText('Выбрать')
       setClassesList('add-btn')
     } else {
