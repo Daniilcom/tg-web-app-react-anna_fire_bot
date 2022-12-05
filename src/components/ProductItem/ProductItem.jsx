@@ -9,8 +9,9 @@ const ProductItem = ({ product, className, onAdd, item }) => {
 
   const [buttonText, setButtonText] = useState('Выбрать')
   const [classesList, setClassesList] = useState('add-btn')
+
   const onButtonClick = () => {
-    if ((item = [])) {
+    if (item > 0) {
       setButtonText('Выбрать')
       setClassesList('add-btn')
     } else {
