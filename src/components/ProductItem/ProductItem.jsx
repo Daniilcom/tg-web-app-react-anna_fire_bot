@@ -2,15 +2,11 @@ import React, { useState } from 'react'
 import Button from '../Button/Button'
 import './ProductItem.css'
 
-const ProductItem = ({ product, className, onAdd, item }) => {
-  const onAddHandler = () => {
-    onAdd(product)
-  }
-
+const ProductItem = ({ product, className, onAdd }) => {
   const [buttonText, setButtonText] = useState('Выбрать')
   const [classesList, setClassesList] = useState('add-btn')
-
-  const onButtonClick = () => {
+  const onAddHandler = () => {
+    onAdd(product)
     if (product === 0) {
       setButtonText('Выбрать')
       setClassesList('add-btn')
@@ -19,6 +15,7 @@ const ProductItem = ({ product, className, onAdd, item }) => {
       setButtonText('Убрать')
       setClassesList('add-btn-on')
     }
+    console.log(product)
   }
 
   return (
@@ -33,13 +30,7 @@ const ProductItem = ({ product, className, onAdd, item }) => {
           <b>{product.price}</b>₽
         </span>
       </div>
-      <Button
-        className={classesList}
-        onClick={() => {
-          onAddHandler()
-          onButtonClick()
-        }}
-      >
+      <Button className={classesList} onClick={onAddHandler}>
         {buttonText}
       </Button>
     </div>
