@@ -1,22 +1,26 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Button from '../Button/Button'
 import './ProductItem.css'
 
-const ProductItem = ({ product, className, onAdd }) => {
+const ProductItem = ({ product, className, onAdd, id, addedItems }) => {
   const [buttonText, setButtonText] = useState('Выбрать')
   const [classesList, setClassesList] = useState('add-btn')
+
   const onAddHandler = () => {
     onAdd(product)
-    if (product === 0) {
+  }
+
+  const addedItem = addedItems.some((item) => item.id === id)
+
+  useEffect(() => {
+    if (addedItem) {
+      setButtonText('Убрать')
+      setClassesList('add-btn add-btn_on')
+    } else {
       setButtonText('Выбрать')
       setClassesList('add-btn')
     }
-    if (product !== 0) {
-      setButtonText('Убрать')
-      setClassesList('add-btn-on')
-    }
-    console.log(product)
-  }
+  }, [addedItems])
 
   return (
     <div className={'product ' + className}>

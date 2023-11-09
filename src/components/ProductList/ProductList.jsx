@@ -94,10 +94,11 @@ const ProductList = () => {
     <div className={'list'}>
       {products.map((item) => (
         <ProductItem
+          id={item.id}
           product={item}
           onAdd={onAdd}
           className={'item'}
-          item={item}
+          addedItems={addedItems}
         />
       ))}
     </div>
